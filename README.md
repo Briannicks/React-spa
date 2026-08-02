@@ -1,51 +1,27 @@
 # Personal Project Showcase App
 
-A simple React app built with Vite, matching the provided mock-up.
+A simple React app where you can add, search, and delete projects.
 
-## How to run it
+## How to Run
 
-```
-npm install
-npm run dev
-```
+1. Install Node.js if you don't have it: https://nodejs.org
+2. Open a terminal in this folder and run:
+   ```
+   npm install
+   npm run dev
+   ```
+3. Open the link it gives you in your browser.
 
-## Component Tree
+## What It Does
 
-```
-App (holds projects and searchTerm state)
-├── AddProjectForm (local state: title, description)
-├── SearchBar
-└── ProjectList
-    └── ProjectCard (x however many projects match the search)
-```
+- Add a project with a title and description
+- Search projects by title
+- Delete a project with the ✕ button
 
-## State and Props
+## Components
 
-- **App** holds the two pieces of state that everything else depends on:
-  - `projects` — the array of all projects
-  - `searchTerm` — the current text typed into the search bar
-
-  These live in `App` (the nearest common parent) because both the form
-  and the search bar and the list all need to read or update them.
-
-- **AddProjectForm** has its own local state for `title` and `description`
-  since only this form needs them. On submit, it calls `props.onAddProject`
-  (passed down from `App`) with the new title and description, then clears
-  its inputs.
-
-- **SearchBar** has no state of its own. It's a controlled input: its
-  value comes from `props.searchTerm`, and every keystroke calls
-  `props.onSearchChange` to update the state up in `App`.
-
-- **ProjectList** receives the already-filtered `projects` array plus
-  `onDeleteProject`, and maps over the list to render a `ProjectCard`
-  for each one.
-
-- **ProjectCard** receives `id`, `title`, `description`, and `onDelete` as
-  props. Clicking the ✕ button calls `onDelete(id)`, which bubbles back up
-  to `App` and removes that project from state.
-
-## Styling
-
-Plain CSS in `src/App.css`, styled to match the card layout in the
-mock-up, with a small responsive tweak for narrow screens.
+- **App** - holds the list of projects and the search text
+- **AddProjectForm** - form to add a new project
+- **SearchBar** - input to search projects
+- **ProjectList** - shows the list of projects
+- **ProjectCard** - one project in the list
